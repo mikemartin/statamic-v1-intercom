@@ -5,8 +5,9 @@ use Intercom\IntercomClient;
 class Hooks_intercom extends Hooks {
 
   public function raven__on_success($data) {
-    $accessToken = $this->fetchConfig('access_token');
-    $intercom = new IntercomClient($accessToken, null);
+    $appId = $this->fetchConfig('app_id');
+    $apiKey = $this->fetchConfig('api_key');
+    $intercom = new IntercomClient($appId, $apiKey);
 
     // Get formset list from config
     $allowedFormsets = $this->fetchConfig('formsets');
